@@ -48,7 +48,7 @@ for directory_d2_first in subdirectories:
 outputdirectory = r'C:\Users\Josso\Documents\Radboud\pasma_parsed_ww.txt'
 f = codecs.open(outputdirectory, 'w', encoding='utf8')
 
-f.write("bnc_file,bnc_file_n,fold_no,genre,id,min_context,partition,sentence_end_idx,sentence_number,sentence_offset,sentence_start_idx,subword_offset,text_segment_id,verb,word_offset,y,subject,object,subject_lemma,object_lemma,verb_lemma,sentence" + "\n")
+f.write("bnc_file,bnc_file_n,fold_no,genre,id,min_context,partition,sentence_end_idx,sentence_number,sentence_offset,sentence_start_idx,subword_offset,text_segment_id,verb,word_offset,subject,object,subject_lemma,object_lemma,verb_lemma,sentence,y" + "\n")
 
 for filename in os.listdir(directory):
     if filename.endswith(".xml"):
@@ -654,7 +654,7 @@ for filename in os.listdir(directory):
                         # 70 percent train, 30 percent test
                         # 5757 training data
                         # 2467 test data
-                        if sent_no > 6750:  # TODO test 6250
+                        if sent_no > 6750:
                             sen_offset = "0"
                             sub_offset = "0"  # 1 for train 0 for test
                             partition = "test"
