@@ -1199,6 +1199,50 @@ for directory_d2_first in subdirectories:
             if verbd7lemma == "None":
                 verbd7lemma = ""
 
+            # Subject none parsers
+            if subd1 == "None":
+                subd1 = ""
+
+            if subd2 == "None":
+                subd2 = ""
+
+            if subd3 == "None":
+                subd3 = ""
+
+            if subd4 == "None":
+                subd4 = ""
+
+            if subd5 == "None":
+                subd5 = ""
+
+            if subd6 == "None":
+                subd6 = ""
+
+            if subd7 == "None":
+                subd7 = ""
+
+            # Object none parsers
+            if objd1 == "None":
+                objd1 = ""
+
+            if objd2 == "None":
+                objd2 = ""
+
+            if objd3 == "None":
+                objd3 = ""
+
+            if objd4 == "None":
+                objd4 = ""
+
+            if objd5 == "None":
+                objd5 = ""
+
+            if objd6 == "None":
+                objd6 = ""
+
+            if objd7 == "None":
+                objd7 = ""
+
             # subject fixes
             if subd1.find(",") != -1:
                 subd1 = subd1.replace(",", "")
