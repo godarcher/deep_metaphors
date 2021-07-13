@@ -1177,6 +1177,28 @@ for directory_d2_first in subdirectories:
             sentence = sentence.replace("\n", "")
             context = context.replace("\n", "")
 
+            # None parsers
+            if verbd1lemma == "None":
+                verbd1lemma = ""
+
+            if verbd2lemma == "None":
+                verbd2lemma = ""
+
+            if verbd3lemma == "None":
+                verbd3lemma = ""
+
+            if verbd4lemma == "None":
+                verbd4lemma = ""
+
+            if verbd5lemma == "None":
+                verbd5lemma = ""
+
+            if verbd6lemma == "None":
+                verbd6lemma = ""
+
+            if verbd7lemma == "None":
+                verbd7lemma = ""
+
             # subject fixes
             if subd1.find(",") != -1:
                 subd1 = subd1.replace(",", "")
@@ -1365,28 +1387,6 @@ for directory_d2_first in subdirectories:
             # context fixes
             if context.find("  ") != -1:
                 context = context.replace("  ", " ")
-
-            # None parsers
-            if verbd1lemma == "None":
-                verbd1lemma = ""
-
-            if verbd2lemma == "None":
-                verbd2lemma = ""
-
-            if verbd3lemma == "None":
-                verbd3lemma = ""
-
-            if verbd4lemma == "None":
-                verbd4lemma = ""
-
-            if verbd5lemma == "None":
-                verbd5lemma = ""
-
-            if verbd6lemma == "None":
-                verbd6lemma = ""
-
-            if verbd7lemma == "None":
-                verbd7lemma = ""
 
             # *! ACTUAL OUTPUT
 
