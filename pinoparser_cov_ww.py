@@ -49,7 +49,6 @@ olemd5 = ""
 olemd6 = ""
 olemd7 = ""
 
-
 subd1 = ""
 subd2 = ""
 subd3 = ""
@@ -1442,8 +1441,8 @@ for directory_d2_first in subdirectories:
 
                 output = "COV,1,1,news," + "COV_fragment01_" + str(filenumber) + "_0," + '"' + context + '"' + ",test," + str(
                     sen_end_id) + "," + str(sentence_number) + ",0," + str(sen_sta_id) + ",0" + ",COV-fragment01," + verbd1 + ","
-                output = output + str(word_offset) + ",0," + str(subd1) + "," + str(
-                    objd1) + "," + slemd1 + "," + olemd1 + "," + verbd1lemma + "," + sentence + "\n"
+                output = output + str(word_offset) + "," + str(subd1) + "," + str(
+                    objd1) + "," + slemd1 + "," + olemd1 + "," + verbd1lemma + "," + sentence + ",0," + "\n"
                 f.write(output)
             if verbd2 != "" and verbd2 != " " and verbd2 != "\n":
                 # actual output
@@ -1453,8 +1452,8 @@ for directory_d2_first in subdirectories:
 
                 output = "COV,1,1,news," + "COV_fragment01_" + str(filenumber) + "_0," + '"' + context + '"' + ",test," + str(
                     sen_end_id) + "," + str(sentence_number) + ",0," + str(sen_sta_id) + ",0" + ",COV-fragment01," + verbd2 + ","
-                output = output + str(word_offset) + ",0," + str(subd2) + "," + str(
-                    objd2) + "," + slemd2 + "," + olemd2 + "," + verbd2lemma + "," + sentence + "\n"
+                output = output + str(word_offset) + "," + str(subd2) + "," + str(
+                    objd2) + "," + slemd2 + "," + olemd2 + "," + verbd2lemma + "," + sentence + ",0," + "\n"
                 f.write(output)
             if verbd3 != "" and verbd3 != " " and verbd3 != "\n":
                 # actual output
@@ -1464,8 +1463,8 @@ for directory_d2_first in subdirectories:
 
                 output = "COV,1,1,news," + "COV_fragment01_" + str(filenumber) + "_0," + '"' + context + '"' + ",test," + str(
                     sen_end_id) + "," + str(sentence_number) + ",0," + str(sen_sta_id) + ",0" + ",COV-fragment01," + verbd3 + ","
-                output = output + str(word_offset) + ",0," + str(subd3) + "," + str(
-                    objd3) + "," + slemd3 + "," + olemd3 + "," + verbd3lemma + "," + sentence + "\n"
+                output = output + str(word_offset) + "," + str(subd3) + "," + str(
+                    objd3) + "," + slemd3 + "," + olemd3 + "," + verbd3lemma + "," + sentence + ",0," + "\n"
                 f.write(output)
             if verbd4 != "" and verbd4 != " " and verbd4 != "\n":
                 # actual output
@@ -1475,8 +1474,8 @@ for directory_d2_first in subdirectories:
 
                 output = "COV,1,1,news," + "COV_fragment01_" + str(filenumber) + "_0," + '"' + context + '"' + ",test," + str(
                     sen_end_id) + "," + str(sentence_number) + ",0," + str(sen_sta_id) + ",0" + ",COV-fragment01," + verbd4 + ","
-                output = output + str(word_offset) + ",0," + str(subd4) + "," + str(
-                    objd4) + "," + slemd4 + "," + olemd4 + "," + verbd4lemma + "," + sentence + "\n"
+                output = output + str(word_offset) + "," + str(subd4) + "," + str(
+                    objd4) + "," + slemd4 + "," + olemd4 + "," + verbd4lemma + "," + sentence + ",0," + "\n"
                 f.write(output)
             if verbd5 != "" and verbd5 != " " and verbd5 != "\n":
                 # actual output
@@ -1486,8 +1485,8 @@ for directory_d2_first in subdirectories:
 
                 output = "COV,1,1,news," + "COV_fragment01_" + str(filenumber) + "_0," + '"' + context + '"' + ",test," + str(
                     sen_end_id) + "," + str(sentence_number) + ",0," + str(sen_sta_id) + ",0" + ",COV-fragment01," + verbd5 + ","
-                output = output + str(word_offset) + ",0," + str(subd5) + "," + str(
-                    objd5) + "," + slemd5 + "," + olemd5 + "," + verbd5lemma + "," + sentence + "\n"
+                output = output + str(word_offset) + "," + str(subd5) + "," + str(
+                    objd5) + "," + slemd5 + "," + olemd5 + "," + verbd5lemma + "," + sentence + ",0," + "\n"
                 f.write(output)
             if verbd6 != "" and verbd6 != " " and verbd6 != "\n":
                 # actual output
@@ -1497,8 +1496,8 @@ for directory_d2_first in subdirectories:
 
                 output = "COV,1,1,news," + "COV_fragment01_" + str(filenumber) + "_0," + '"' + context + '"' + ",test," + str(
                     sen_end_id) + "," + str(sentence_number) + ",0," + str(sen_sta_id) + ",0" + ",COV-fragment01," + verbd6 + ","
-                output = output + str(word_offset) + ",0," + str(subd6) + "," + str(
-                    objd6) + "," + slemd6 + "," + olemd6 + "," + verbd6lemma + "," + sentence + "\n"
+                output = output + str(word_offset) + "," + str(subd6) + "," + str(
+                    objd6) + "," + slemd6 + "," + olemd6 + "," + verbd6lemma + "," + sentence + ",0," + "\n"
                 f.write(output)
             if verbd7 != "" and verbd7 != " " and verbd7 != "\n":
                 # actual output
@@ -1508,8 +1507,8 @@ for directory_d2_first in subdirectories:
 
                 output = "COV,1,1,news," + "COV_fragment01_" + str(filenumber) + "_0," + '"' + context + '"' + ",test," + str(
                     sen_end_id) + "," + str(sentence_number) + ",0," + str(sen_sta_id) + ",0" + ",COV-fragment01," + verbd7 + ","
-                output = output + str(word_offset) + ",0," + str(subd7) + "," + str(
-                    objd7) + "," + slemd7 + "," + olemd7 + "," + verbd7lemma + "," + sentence + "\n"
+                output = output + str(word_offset) + "," + str(subd7) + "," + str(
+                    objd7) + "," + slemd7 + "," + olemd7 + "," + verbd7lemma + "," + sentence + ",0," + "\n"
                 f.write(output)
 
     f.close()
