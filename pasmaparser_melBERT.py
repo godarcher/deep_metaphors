@@ -471,7 +471,7 @@ for filename in os.listdir(directory):
                                     cor_sentence + "," + str(metaphor)
                                 f.write(output + "\n")
 
-                    elif str(child_of_child.get('pos')) != "None" and ("WW(" in child_of_child.get('pos')):
+                    elif str(child_of_child.get('pos')) != "None" and (("WW(" in child_of_child.get('pos')) or "N(" in child_of_child.get('pos')):
                         # gather verb lemma
                         verb_lemma = child_of_child.get('lem')
 
