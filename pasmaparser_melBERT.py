@@ -420,36 +420,6 @@ for filename in os.listdir(directory):
                                 if cor_sentence.find(",") != -1 or cor_sentence.find(";") != -1:
                                     cor_sentence = '"' + cor_sentence + '"'
 
-                                if subject.find(",") != -1:
-                                    subject.replace(",", "")
-
-                                if objec.find(",") != -1:
-                                    objec.replace(",", "")
-
-                                if subjectlem.find(",") != -1:
-                                    subjectlem.replace(",", "")
-
-                                if objectlem.find(",") != -1:
-                                    objectlem.replace(",", "")
-
-                                if subject.find(".") != -1:
-                                    subject.replace(".", "")
-
-                                if objec.find(".") != -1:
-                                    objec.replace(".", "")
-
-                                if subjectlem.find(".") != -1:
-                                    subjectlem.replace(".", "")
-
-                                if objectlem.find(".") != -1:
-                                    objectlem.replace(".", "")
-
-                                if subjectlem.find("_") != -1 and subject.find("_") == -1:
-                                    subjectlem = subjectlem.replace("_", "")
-
-                                if objectlem.find("_") != -1 and objec.find("_") == -1:
-                                    objectlem = objectlem.replace("_", "")
-
                                 if cor_context.find("  ") != -1:
                                     cor_context = cor_context.replace(
                                         "  ", " ")
@@ -457,21 +427,26 @@ for filename in os.listdir(directory):
                                 if cor_sentence[0:1] == " ":
                                     cor_sentence = cor_sentence[1:]
 
-                                # print output in csv form
-                                sent_no = sent_no + 1
-                                output = filename + "," + str(file_fragment) + "," + str(filenumber) + "," + genre + "," + word_id + "," + \
-                                    '"' + cor_context + '"' + "," + partition + "," + \
-                                    str(sen_end_index) + "," + \
-                                    sent_number + "," + sen_offset
-                                output = output + "," + \
-                                    str(sen_start_index) + "," + sub_offset + "," + \
-                                    text_segment + "," + verbtext + "," + word_offset
-                                output = output + "," + subject + "," + objec + "," + subjectlem + "," + \
-                                    objectlem + "," + verb_lemma + "," + \
-                                    cor_sentence + "," + str(metaphor)
+                                # ? Defining output
+                                output = text_segment + " " + \
+                                    sent_no + "\t" + \
+                                    str(metaphor) + "\t" + cor_sentence + \
+                                    "\t" + pos_tag + "\t" + word_offset
+                                # TODO ADD POS before w_index
                                 f.write(output + "\n")
 
-                    elif str(child_of_child.get('pos')) != "None" and (("WW(" in child_of_child.get('pos')) or "N(" in child_of_child.get('pos')):
+                    elif str(child_of_child.get('pos')) != "None":
+
+                        pos_tag = ""
+
+                        # ? GATHER POS TAG FROM pos
+                        if "WW(" in child_of_child.get('pos'):
+                            pos_tag = "VERB"
+                        elif "N(" in child_of_child.get('pos'):
+                            pos_tag = "NOUN"
+
+                        # TODO ADD OTHER KINDS OF POS TAGS
+
                         # gather verb lemma
                         verb_lemma = child_of_child.get('lem')
 
@@ -618,8 +593,10 @@ for filename in os.listdir(directory):
                         # ? Defining output
                         output = text_segment + " " + \
                             sent_no + "\t" + \
-                            str(metaphor) + "\t" + cor_sentence + word_offset
+                            str(metaphor) + "\t" + cor_sentence + \
+                            "\t" + pos_tag + "\t" + word_offset
                         # TODO ADD POS before w_index
+                        f.write(output + "\n")
 
 
 print("Sentences parsed: " + str(sent_no))
