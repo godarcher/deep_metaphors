@@ -216,7 +216,19 @@ for filename in os.listdir(directory):
                     verb_lemma = ""
                     if (child_of_child.get('s') == "UNKNOWN"):
                         for child3 in child_of_child:
-                            if ("WW(" in child3.get('pos')):
+                            # replaced this with an always true comment
+                            if (True == True):
+
+                                pos_tag = ""
+
+                                # ? GATHER POS TAG FROM pos
+                                if "WW(" in child3.get('pos'):
+                                    pos_tag = "VERB"
+                                elif "N(" in child3.get('pos'):
+                                    pos_tag = "NOUN"
+
+                                # TODO ADD OTHER KINDS OF POS TAGS
+
                                 # gather verb lemma
                                 verb_lemma = child3.get('lem')
 
@@ -292,6 +304,7 @@ for filename in os.listdir(directory):
                                         # print("verb")
                                         # print(verbtext)
                                         # sanitizing input and iterating it
+                                        # TODO: REPLACE SUBJECT WITH POS TAG?
                                         for line in context:
                                             if subject == "" and objec == "":
                                                 verb_index = line.rfind(
@@ -315,66 +328,6 @@ for filename in os.listdir(directory):
                                                         else:
                                                             subject = line[sub_index +
                                                                            6:subjl_index-1]
-
-                                                    obj_index = line.rfind(
-                                                        "obj:")
-                                                    if obj_index != -1:
-                                                        # object found
-
-                                                        objl_index = line.rfind(
-                                                            "objlemma:")
-
-                                                        if sub_index != -1:
-                                                            # end findable by objectlemma
-                                                            objec = line[obj_index +
-                                                                         5:sub_index-1]
-                                                        else:
-                                                            objec = line[obj_index +
-                                                                         5:objl_index-1]
-
-                                                    # confirm this is the right sentence by finding object and or subject in the sentence
-                                                    if objec != "" and subject != "":
-                                                        # both found
-
-                                                        #check in sentence
-                                                        if cor_sentence.find(objec) != -1 and cor_sentence.find(subject) != -1:
-                                                            # determine lemmas
-                                                            objl_index = line.rfind(
-                                                                "objlemma:")
-                                                            subjl_index = line.rfind(
-                                                                "subjlemma:")
-                                                            end_index = line.rfind(
-                                                                "\r")
-                                                            objectlem = line[objl_index +
-                                                                             10:subjl_index]
-                                                            subjectlem = line[subjl_index +
-                                                                              11:end_index]
-
-                                                    elif objec != "" and subject == "":
-                                                        # only object found
-
-                                                        #check in sentence
-                                                        if cor_sentence.find(objec) != -1:
-                                                            # determine lemma
-                                                            objl_index = line.rfind(
-                                                                "objlemma:")
-                                                            end_index = line.rfind(
-                                                                "\r")
-                                                            objectlem = line[objl_index +
-                                                                             10:end_index]
-
-                                                    elif objec == "" and subject != "":
-                                                        # only subject found
-
-                                                        #check in sentence
-                                                        if cor_sentence.find(subject) != -1:
-                                                            # determine lemma
-                                                            subjl_index = line.rfind(
-                                                                "subjlemma:")
-                                                            end_index = line.rfind(
-                                                                "\r")
-                                                            subjectlem = line[subjl_index +
-                                                                              11:end_index]
 
                                 # gather text_segment_id
                                 text_segment = filename + "-fragment01"
