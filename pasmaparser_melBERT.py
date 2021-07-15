@@ -45,10 +45,24 @@ for directory_d2_first in subdirectories:
     # if filename.endswith(".xml"):
     # print(filename)
 
+#! WE LIST ALL OUTPUTDIRECTORIES USED
 outputdirectory_train = r'C:\Users\Josso\Downloads\MelBERT-main\data_sample\train.tsv'
-f = codecs.open(outputdirectory_train, 'w', encoding='utf8')
+outputdirectory_test = r'C:\Users\Josso\Downloads\MelBERT-main\data_sample\test.tsv'
+outputdirectory_dev = r'C:\Users\Josso\Downloads\MelBERT-main\data_sample\dev.tsv'
 
+# ? WE ADD ALL DIRECTORY HEADERS
+f = codecs.open(outputdirectory_train, 'w', encoding='utf8')
 f.write("index  label   sentence    POS w_index" + "\n")
+f.close()
+
+f = codecs.open(outputdirectory_test, 'w', encoding='utf8')
+f.write("index  label   sentence    POS w_index" + "\n")
+f.close()
+
+f = codecs.open(outputdirectory_dev, 'w', encoding='utf8')
+f.write("index  label   sentence    POS w_index" + "\n")
+f.close()
+
 
 for filename in os.listdir(directory):
     if filename.endswith(".xml"):
