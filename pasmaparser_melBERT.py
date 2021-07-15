@@ -543,6 +543,7 @@ for filename in os.listdir(directory):
                                 # print(verbtext)
                                 # sanitizing input and iterating it
                                 for line in context:
+                                    # TODO CHANGE CODE HERE TO RETRIEVE POS INSTEAD OF SUBJECT
                                     if subject == "" and objec == "":
                                         verb_index = line.rfind(
                                             "verb: " + verbtext)
@@ -564,65 +565,6 @@ for filename in os.listdir(directory):
                                                 else:
                                                     subject = line[sub_index +
                                                                    6:subjl_index-1]
-
-                                            obj_index = line.rfind("obj:")
-                                            if obj_index != -1:
-                                                # object found
-
-                                                objl_index = line.rfind(
-                                                    "objlemma:")
-
-                                                if sub_index != -1:
-                                                    # end findable by objectlemma
-                                                    objec = line[obj_index +
-                                                                 5:sub_index-1]
-                                                else:
-                                                    objec = line[obj_index +
-                                                                 5:objl_index-1]
-
-                                            # confirm this is the right sentence by finding object and or subject in the sentence
-                                            if objec != "" and subject != "":
-                                                # both found
-
-                                                #check in sentence
-                                                if cor_sentence.find(objec) != -1 and cor_sentence.find(subject) != -1:
-                                                    # determine lemmas
-                                                    objl_index = line.rfind(
-                                                        "objlemma:")
-                                                    subjl_index = line.rfind(
-                                                        "subjlemma:")
-                                                    end_index = line.rfind(
-                                                        "\r")
-                                                    objectlem = line[objl_index +
-                                                                     10:subjl_index]
-                                                    subjectlem = line[subjl_index +
-                                                                      11:end_index]
-
-                                            elif objec != "" and subject == "":
-                                                # only object found
-
-                                                #check in sentence
-                                                if cor_sentence.find(objec) != -1:
-                                                    # determine lemma
-                                                    objl_index = line.rfind(
-                                                        "objlemma:")
-                                                    end_index = line.rfind(
-                                                        "\r")
-                                                    objectlem = line[objl_index +
-                                                                     10:end_index]
-
-                                            elif objec == "" and subject != "":
-                                                # only subject found
-
-                                                #check in sentence
-                                                if cor_sentence.find(subject) != -1:
-                                                    # determine lemma
-                                                    subjl_index = line.rfind(
-                                                        "subjlemma:")
-                                                    end_index = line.rfind(
-                                                        "\r")
-                                                    subjectlem = line[subjl_index +
-                                                                      11:end_index]
 
                         # gather corresponding context
                         cor_context = contextlist[index_sen]
@@ -667,64 +609,18 @@ for filename in os.listdir(directory):
                             word_id = text_segment + "_" + sent_number + "_" + \
                                 sen_offset + "_" + word_offset + "_" + "1" + "_" + verbtext
 
-                        if subject.find(",") != -1:
-                            subject = subject.replace(",", "")
-
-                        if objec.find(",") != -1:
-                            objec = objec.replace(",", "")
-
-                        if subjectlem.find(",") != -1:
-                            subjectlem = subjectlem.replace(",", "")
-
-                        if objectlem.find(",") != -1:
-                            objectlem = objectlem.replace(",", "")
-
-                        if subject.find(".") != -1:
-                            subject.replace(".", "")
-
-                        if objec.find(".") != -1:
-                            objec.replace(".", "")
-
-                        if subjectlem.find(".") != -1:
-                            subjectlem.replace(".", "")
-
-                        if objectlem.find(".") != -1:
-                            objectlem.replace(".", "")
-
-                        if cor_sentence.find(",") != -1 or cor_sentence.find(";") != -1:
-                            cor_sentence = '"' + cor_sentence + '"'
-
-                        if subjectlem.find("_") != -1 and subject.find("_") == -1:
-                            subjectlem = subjectlem.replace("_", "")
-
-                        if objectlem.find("_") != -1 and objec.find("_") == -1:
-                            objectlem = objectlem.replace("_", "")
-
-                        if cor_context.find("  ") != -1:
-                            cor_context = cor_context.replace("  ", " ")
-
                         if cor_sentence[0:1] == " ":
                             cor_sentence = cor_sentence[1:]
 
-                        if objectlem == "" and objec != "":
-                            objectlem = objec
-
-                        if subjectlem == "" and subject != "":
-                            subjectlem = subject
-
                         # print output in csv form
                         sent_no = sent_no + 1
-                        output = filename + "," + str(file_fragment) + "," + str(filenumber) + "," + genre + "," + word_id + "," + \
-                            '"' + cor_context + '"' + "," + partition + "," + \
-                            str(sen_end_index) + "," + \
-                            sent_number + "," + sen_offset
-                        output = output + "," + \
-                            str(sen_start_index) + "," + sub_offset + "," + \
-                            text_segment + "," + verbtext + "," + word_offset
-                        output = output + "," + subject + "," + objec + "," + subjectlem + "," + \
-                            objectlem + "," + verb_lemma + "," + \
-                            cor_sentence + "," + str(metaphor)
-                        f.write(output + "\n")
+
+                        # ? Defining output
+                        output = text_segment + " " + \
+                            sent_no + "\t" + \
+                            str(metaphor) + "\t" + cor_sentence + word_offset
+                        # TODO ADD POS before w_index
+
 
 print("Sentences parsed: " + str(sent_no))
 f.close()
