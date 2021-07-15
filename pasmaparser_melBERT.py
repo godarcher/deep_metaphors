@@ -45,10 +45,10 @@ for directory_d2_first in subdirectories:
     # if filename.endswith(".xml"):
     # print(filename)
 
-outputdirectory = r'C:\Users\Josso\Documents\Radboud\pasma_parsed_ww.txt'
-f = codecs.open(outputdirectory, 'w', encoding='utf8')
+outputdirectory_train = r'C:\Users\Josso\Downloads\MelBERT-main\data_sample\train.tsv'
+f = codecs.open(outputdirectory_train, 'w', encoding='utf8')
 
-f.write("bnc_file,bnc_file_n,fold_no,genre,id,min_context,partition,sentence_end_idx,sentence_number,sentence_offset,sentence_start_idx,subword_offset,text_segment_id,verb,word_offset,subject,object,subject_lemma,object_lemma,verb_lemma,sentence,y" + "\n")
+f.write("index  label   sentence    POS w_index" + "\n")
 
 for filename in os.listdir(directory):
     if filename.endswith(".xml"):
