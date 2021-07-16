@@ -411,7 +411,12 @@ for filename in os.listdir(directory):
                             pos_tag = "VERB"
                         elif "N(" in child_of_child.get('pos'):
                             pos_tag = "NOUN"
-
+                        elif "ADJ(" in child_of_child.get('pos'):
+                            pos_tag = "ADJ"
+                        elif "VNW(" in child_of_child.get('pos'):
+                            pos_tag = "PRON"
+                        elif "BW(" in child_of_child.get('pos'):
+                            pos_tag = "ADV"
                         # TODO ADD OTHER KINDS OF POS TAGS
 
                         # gather verb lemma
