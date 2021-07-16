@@ -494,58 +494,60 @@ for filename in os.listdir(directory):
                         # print(verbtext)
                         # print(cor_sentence)
 
-                        # integrate alpino object/subject
-                        folder_name = filename
-                        folder_name = folder_name.replace(".xml", "")
-                        folder_name = folder_name.replace("-fa", "")
-                        folder_name = folder_name + "_sen.txt.alpinoxml"
-                        folder_name = directory + "\\" + folder_name
-                        subject = ""
-                        objec = ""
-                        subjectlem = ""
-                        objectlem = ""
-                        for filename_2 in os.listdir(folder_name):
-                            # because we count from 0 but pasma from 1
-                            con_sentnumber = str(index_sen + 1)
-                            correctfile = filename + "_" + con_sentnumber + ".xml.txt"
-                            correctfile_2 = filename + "_" + \
-                                str(int(con_sentnumber) + 1) + ".xml.txt"
-                            correctfile_3 = filename + "_" + \
-                                str(int(con_sentnumber) - 1) + ".xml.txt"
-                            try_again = False
-                            if filename_2 == correctfile or filename_2 == correctfile_2 or filename_2 == correctfile_3:
-                                # getting directory
-                                full_directory = folder_name + "\\" + filename_2
-                                context = codecs.open(
-                                    full_directory, 'r', encoding='ISO-8859-1').readlines()
+                        # ? ALPINO SUB/OBJ IS VERB ONLY
+                        if (pos_tag == "VERB"):
+                            # TODO: This is left for later reintregation of object/subject for verb only models
+                            # integrate alpino object/subject
+                            folder_name = filename
+                            folder_name = folder_name.replace(".xml", "")
+                            folder_name = folder_name.replace("-fa", "")
+                            folder_name = folder_name + "_sen.txt.alpinoxml"
+                            folder_name = directory + "\\" + folder_name
+                            subject = ""
+                            objec = ""
+                            subjectlem = ""
+                            objectlem = ""
+                            for filename_2 in os.listdir(folder_name):
+                                # because we count from 0 but pasma from 1
+                                con_sentnumber = str(index_sen + 1)
+                                correctfile = filename + "_" + con_sentnumber + ".xml.txt"
+                                correctfile_2 = filename + "_" + \
+                                    str(int(con_sentnumber) + 1) + ".xml.txt"
+                                correctfile_3 = filename + "_" + \
+                                    str(int(con_sentnumber) - 1) + ".xml.txt"
+                                try_again = False
+                                if filename_2 == correctfile or filename_2 == correctfile_2 or filename_2 == correctfile_3:
+                                    # getting directory
+                                    full_directory = folder_name + "\\" + filename_2
+                                    context = codecs.open(
+                                        full_directory, 'r', encoding='ISO-8859-1').readlines()
 
-                                # print(context)
-                                # print("verb")
-                                # print(verbtext)
-                                # sanitizing input and iterating it
-                                for line in context:
-                                    # TODO CHANGE CODE HERE TO RETRIEVE POS INSTEAD OF SUBJECT
-                                    if subject == "" and objec == "":
-                                        verb_index = line.rfind(
-                                            "verb: " + verbtext)
-                                        if verb_index != -1:
-                                            # verb found
+                                    # print(context)
+                                    # print("verb")
+                                    # print(verbtext)
+                                    # sanitizing input and iterating it
+                                    for line in context:
+                                        if subject == "" and objec == "":
+                                            verb_index = line.rfind(
+                                                "verb: " + verbtext)
+                                            if verb_index != -1:
+                                                # verb found
 
-                                            sub_index = line.rfind("subj:")
-                                            if sub_index != -1:
-                                                # subject found
+                                                sub_index = line.rfind("subj:")
+                                                if sub_index != -1:
+                                                    # subject found
 
-                                                objl_index = line.rfind(
-                                                    "objlemma:")
-                                                subjl_index = line.rfind(
-                                                    "subjlemma:")
-                                                if objl_index != -1:
-                                                    # end findable by objectlemma
-                                                    subject = line[sub_index +
-                                                                   6:objl_index-1]
-                                                else:
-                                                    subject = line[sub_index +
-                                                                   6:subjl_index-1]
+                                                    objl_index = line.rfind(
+                                                        "objlemma:")
+                                                    subjl_index = line.rfind(
+                                                        "subjlemma:")
+                                                    if objl_index != -1:
+                                                        # end findable by objectlemma
+                                                        subject = line[sub_index +
+                                                                       6:objl_index-1]
+                                                    else:
+                                                        subject = line[sub_index +
+                                                                       6:subjl_index-1]
 
                         # gather corresponding context
                         cor_context = contextlist[index_sen]
@@ -577,6 +579,10 @@ for filename in os.listdir(directory):
                         # 70 percent train, 30 percent test
                         # 5757 training data
                         # 2467 test data
+                        # TODO: UPDATE NUMERICAL VALUES HERE FOR TRAIN TEST DEV
+                        #! 70 % TRAIN
+                        #! 20 % TEST
+                        #! 10 % DEV
                         if sent_no > 6750:
                             sen_offset = "0"
                             sub_offset = "0"  # 1 for train 0 for test
