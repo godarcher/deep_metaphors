@@ -406,7 +406,7 @@ for filename in os.listdir(directory):
 
                         pos_tag = ""
 
-                        # ? GATHER POS TAG FROM pos
+                        # ? Het correct taggen van werkwoorden, zelfstandige en bijvoeglijke naamwoorden.
                         if "WW(" in child_of_child.get('pos'):
                             pos_tag = "VERB"
                         elif "N(" in child_of_child.get('pos'):
@@ -414,14 +414,15 @@ for filename in os.listdir(directory):
                         elif "ADJ(" in child_of_child.get('pos'):
                             pos_tag = "ADJ"
 
-                        # * Het correct taggen van voornaamwoorden
+                        # ? Het correct taggen van voornaamwoorden
                         elif "VNW(" in child_of_child.get('pos') and "adv-pron" in child_of_child.get('pos'):
                             pos_tag = "ADV"
                         elif "VNW(" in child_of_child.get('pos') and "prenom" in child_of_child.get('pos'):
                             pos_tag = "DET"
-                        elif "VNW(" in child_of_child.get('pos') and (child_of_child.get('word').tolower() == "dat" or child_of_child.get('word').tolower() == 'het'):
-                            pos_tag = "DET"
+                        elif "VNW(" in child_of_child.get('pos') and "pron" in child_of_child.get('pos') and child_of_child.get('word').tolower() != 'het':
+                            pos_tag = "PRON"
 
+                        # ? Het correct taggen van bijwoorden, lidwoorden en nummers
                         elif "BW(" in child_of_child.get('pos'):
                             pos_tag = "ADV"
                         elif "LID(" in child_of_child.get('pos'):
