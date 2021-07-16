@@ -413,11 +413,18 @@ for filename in os.listdir(directory):
                             pos_tag = "NOUN"
                         elif "ADJ(" in child_of_child.get('pos'):
                             pos_tag = "ADJ"
-                        elif "VNW(" in child_of_child.get('pos'):
-                            pos_tag = "PRON"
+
+                        # * Het correct taggen van voornaamwoorden
+                        elif "VNW(" in child_of_child.get('pos') and "adv-pron" in child_of_child.get('pos'):
+                            pos_tag = "ADV"
+                        elif "VNW(" in child_of_child.get('pos') and "prenom" in child_of_child.get('pos'):
+                            pos_tag = "DET"
+                        elif "VNW(" in child_of_child.get('pos') and (child_of_child.get('word').tolower() == "dat" or child_of_child.get('word').tolower() == 'het'):
+                            pos_tag = "DET"
+
                         elif "BW(" in child_of_child.get('pos'):
                             pos_tag = "ADV"
-                        elif "LID(" in child_of_child.get('pos') or "VNW(" in child_of_child.get('pos'):
+                        elif "LID(" in child_of_child.get('pos'):
                             pos_tag = "DET"
                         elif child_of_child.get('lem').isnumeric():
                             pos_tag = "NUM"
