@@ -392,6 +392,10 @@ for filename in os.listdir(directory):
                                 # sentence offset
                                 sen_offset = sent_number
 
+                                #increase sent_no
+                                if pos_tag is not "":
+                                    sent_no = sent_no + 1
+
                                 # divide into test and train
                                 # 70 percent train, 30 percent test
                                 # 5757 training data
@@ -419,9 +423,9 @@ for filename in os.listdir(directory):
 
                                 # ? Defining output
                                 output = text_segment + " " + \
-                                    sent_no + "\t" + \
+                                    str(sent_no) + "\t" + \
                                     str(metaphor) + "\t" + cor_sentence + \
-                                    "\t" + pos_tag + "\t" + word_offset
+                                    "\t" + str(pos_tag) + "\t" + str(word_offset)
                                 f.write(output + "\n")
 
                     elif str(child_of_child.get('pos')) != "None":
@@ -600,13 +604,14 @@ for filename in os.listdir(directory):
                             cor_sentence = cor_sentence[1:]
 
                         # print output in csv form
-                        sent_no = sent_no + 1
+                        if pos_tag is not "":
+                            sent_no = sent_no + 1
 
                         # ? Defining output
                         output = text_segment + " " + \
-                            sent_no + "\t" + \
+                            str(sent_no) + "\t" + \
                             str(metaphor) + "\t" + cor_sentence + \
-                            "\t" + pos_tag + "\t" + word_offset
+                            "\t" + str(pos_tag) + "\t" + str(word_offset)
                         f.write(output + "\n")
 
 
