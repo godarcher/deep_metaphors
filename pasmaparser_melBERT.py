@@ -241,6 +241,29 @@ for filename in os.listdir(directory):
                                 elif "N(" in child3.get('pos'):
                                     pos_tag = "NOUN"
 
+                                # ? Het correct taggen van werkwoorden, zelfstandige en bijvoeglijke naamwoorden.
+                                if "WW(" in child3.get('pos'):
+                                    pos_tag = "VERB"
+                                elif "N(" in child3.get('pos'):
+                                    pos_tag = "NOUN"
+                                elif "ADJ(" in child3.get('pos'):
+                                    pos_tag = "ADJ"
+
+                                # ? Het correct taggen van voornaamwoorden
+                                elif "VNW(" in child3.get('pos') and "adv-pron" in child3.get('pos'):
+                                    pos_tag = "ADV"
+                                elif "VNW(" in child3.get('pos') and "prenom" in child3.get('pos'):
+                                    pos_tag = "DET"
+                                elif "VNW(" in child3.get('pos') and "pron" in child3.get('pos') and child3d.get('word').tolower() != 'het':
+                                    pos_tag = "PRON"
+
+                                # ? Het correct taggen van bijwoorden, lidwoorden en nummers
+                                elif "BW(" in child3.get('pos'):
+                                    pos_tag = "ADV"
+                                elif "LID(" in child3.get('pos'):
+                                    pos_tag = "DET"
+                                elif child3.get('lem').isnumeric():
+                                    pos_tag = "NUM"
                                 # TODO ADD OTHER KINDS OF POS TAGS
 
                                 # gather verb lemma
@@ -399,7 +422,6 @@ for filename in os.listdir(directory):
                                     sent_no + "\t" + \
                                     str(metaphor) + "\t" + cor_sentence + \
                                     "\t" + pos_tag + "\t" + word_offset
-                                # TODO ADD POS before w_index
                                 f.write(output + "\n")
 
                     elif str(child_of_child.get('pos')) != "None":
@@ -579,7 +601,6 @@ for filename in os.listdir(directory):
                             sent_no + "\t" + \
                             str(metaphor) + "\t" + cor_sentence + \
                             "\t" + pos_tag + "\t" + word_offset
-                        # TODO ADD POS before w_index
                         f.write(output + "\n")
 
 
