@@ -417,6 +417,8 @@ for filename in os.listdir(directory):
                             pos_tag = "PRON"
                         elif "BW(" in child_of_child.get('pos'):
                             pos_tag = "ADV"
+                        elif "LID(" in child_of_child.get('pos') or "VNW(" in child_of_child.get('pos'):
+                            pos_tag = "DET"
                         elif child_of_child.get('lem').isnumeric():
                             pos_tag = "NUM"
                         # TODO ADD OTHER KINDS OF POS TAGS
