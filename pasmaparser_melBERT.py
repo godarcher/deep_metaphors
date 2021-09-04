@@ -34,6 +34,7 @@ print("")
 filenumber = 0  # will later on be incremented for new file
 file_fragment = 0
 sent_no = 0
+generate_pos_test = 0
 
 directory = r'C:\Users\Josso\Documents\Radboud\corpus_alpino_parsed'
 subdirectories = os.listdir(directory)
@@ -50,6 +51,15 @@ outputdirectory_train = r'C:\Users\Josso\Downloads\MelBERT-main\data_sample\trai
 outputdirectory_test = r'C:\Users\Josso\Downloads\MelBERT-main\data_sample\test.tsv'
 outputdirectory_dev = r'C:\Users\Josso\Downloads\MelBERT-main\data_sample\dev.tsv'
 
+#* Test pos location
+outputdirectory_test_pos_bn = r'C:\Users\Josso\Downloads\MelBERT-main\data_sample\pasma_pos\Bn\test.tsv'
+outputdirectory_test_pos_bw = r'C:\Users\Josso\Downloads\MelBERT-main\data_sample\pasma_pos\Bw\test.tsv'
+outputdirectory_test_pos_lid = r'C:\Users\Josso\Downloads\MelBERT-main\data_sample\pasma_pos\Lid\test.tsv'
+outputdirectory_test_pos_zn = r'C:\Users\Josso\Downloads\MelBERT-main\data_sample\pasma_pos\Zn\test.tsv'
+outputdirectory_test_pos_ww = r'C:\Users\Josso\Downloads\MelBERT-main\data_sample\pasma_pos\Ww\test.tsv'
+outputdirectory_test_pos_num = r'C:\Users\Josso\Downloads\MelBERT-main\data_sample\pasma_pos\Num\test.tsv'
+outputdirectory_test_pos_vnw = r'C:\Users\Josso\Downloads\MelBERT-main\data_sample\pasma_pos\Vnw\test.tsv'
+
 # ? WE ADD ALL DIRECTORY HEADERS
 f = codecs.open(outputdirectory_train, 'w', encoding='utf8')
 f.write("index  label   sentence    POS w_index" + "\n")
@@ -63,6 +73,7 @@ f = codecs.open(outputdirectory_dev, 'w', encoding='utf8')
 f.write("index  label   sentence    POS w_index" + "\n")
 f.close()
 
+outpu
 
 for filename in os.listdir(directory):
     if filename.endswith(".xml"):
