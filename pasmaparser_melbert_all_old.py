@@ -252,10 +252,10 @@ for filename in os.listdir(directory):
                 sentence = sentence[: len(sentence) - 1]
                 if sentence[len(sentence) - 1 :] == ".":
                     sentence = sentence + " "
-                if sentence[len(sentence) - 1 :].isalpha():
-                    sentence = sentence + ". "
-            elif sentence[len(sentence) - 1 :].isalpha():
-                sentence = sentence + ". "
+                if sentence[len(sentence) - 1 :].isalpha() or sentence[len(sentence) - 1 :].isnumeric():
+                    sentence = sentence + " . "
+            elif sentence[len(sentence) - 1 :].isalpha() or sentence[len(sentence) - 1 :].isnumeric():
+                sentence = sentence + " . "
 
             secondsentences[i] = sentence
 
