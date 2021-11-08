@@ -155,6 +155,7 @@ for filename in os.listdir(directory):
         sentences_amount = len(sentencelist) - 1
         counter = 0
         previous_sen = ""
+        secondsentences = sentencelist
 
         # we format the sentence adding points when needed, to make it even more readable and hopefully get better results in our neural network (upgrade recall value)
         for sentence in sentencelist:
@@ -243,7 +244,9 @@ for filename in os.listdir(directory):
                 contextlist.append(context)
                 contextlist.append(context)
 
-        for sentence in sentencelist:
+        for i in range(len(secondsentences)):
+            sentence = sentencelist[i]
+
             # clean the actual sentence
             if sentence[len(sentence) - 1 :] == " ":
                 sentence = sentence[: len(sentence) - 1]
@@ -253,6 +256,8 @@ for filename in os.listdir(directory):
                     sentence = sentence + ". "
             elif sentence[len(sentence) - 1 :].isalpha():
                 sentence = sentence + ". "
+
+            secondsentences[i] = sentence
 
         # for context in contextlist:
         # print(context)
