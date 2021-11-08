@@ -243,6 +243,17 @@ for filename in os.listdir(directory):
                 contextlist.append(context)
                 contextlist.append(context)
 
+        for sentence in sentencelist:
+            # clean the actual sentence
+            if sentence[len(sentence) - 1 :] == " ":
+                sentence = sentence[: len(sentence) - 1]
+                if sentence[len(sentence) - 1 :] == ".":
+                    sentence = sentence + " "
+                if sentence[len(sentence) - 1 :].isalpha():
+                    sentence = sentence + ". "
+            elif sentence[len(sentence) - 1 :].isalpha():
+                sentence = sentence + ". "
+
         # for context in contextlist:
         # print(context)
 
@@ -439,7 +450,7 @@ for filename in os.listdir(directory):
                                     text_segment = filename + "-fragment01"
 
                                     # gather word offset
-                                    word_offset = child_of_child.get("ref")
+                                    word_offset = child3.get("ref")
                                     last_index = word_offset.rfind(".")
                                     word_offset = word_offset[last_index + 1 :]
                                     word_offset = word_offset.replace(".", "")
@@ -471,6 +482,9 @@ for filename in os.listdir(directory):
 
                                     if cor_context.find("  ") != -1:
                                         cor_context = cor_context.replace("  ", " ")
+
+                                    if cor_sentence[0:1] == " ":
+                                        cor_sentence = cor_sentence[1:]
 
                                     if cor_sentence[0:1] == " ":
                                         cor_sentence = cor_sentence[1:]
@@ -681,6 +695,9 @@ for filename in os.listdir(directory):
                             sen_end_index = len(cor_context)
 
                         # sen_end_index = sen_start_index + len(cor_sentence)
+
+                        if cor_sentence[0:1] == " ":
+                            cor_sentence = cor_sentence[1:]
 
                         if cor_sentence[0:1] == " ":
                             cor_sentence = cor_sentence[1:]
